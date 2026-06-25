@@ -1,0 +1,23 @@
+# Skyramp Workspace Configuration
+workspace:
+  repoName: shinychimra07/coder
+  repoUrl: https://github.com/shinychimra07/coder
+metadata:
+  schemaVersion: v1
+  executorVersion: v1.3.29
+  createdAt: "2026-06-25T18:54:22.492Z"
+  updatedAt: "2026-06-25T18:54:22.499Z"
+services:
+  - serviceName: coder-api
+    language: typescript
+    framework: playwright
+    testDirectory: tests/skyramp
+    api:
+      schemaPath: http://localhost:8093/swagger/doc.json
+      authType: apiKey
+      authHeader: Coder-Session-Token
+      baseUrl: http://localhost:8093
+    runtimeDetails:
+      serverStartCommand: docker compose -f deployment-testbot/docker-compose.yml up -d coder
+      runtime: docker
+      dockerNetwork: deployment-testbot_default

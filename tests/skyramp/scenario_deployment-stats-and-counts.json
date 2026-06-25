@@ -1,0 +1,54 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"workspaces\": {\"pending\": 0, \"building\": 0, \"running\": 0, \"failed\": 0, \"stopped\": 0}}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Coder-Session-Token": [
+        "SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/v2/deployment/stats",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 8093,
+    "Timestamp": "2026-06-25T18:57:03.048Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"pending\": 0, \"building\": 0, \"running\": 0, \"failed\": 0, \"stopped\": 0}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Coder-Session-Token": [
+        "SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/v2/deployment/counts",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 8093,
+    "Timestamp": "2026-06-25T18:57:03.048Z",
+    "Scheme": "http"
+  }
+]
