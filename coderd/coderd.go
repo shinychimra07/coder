@@ -16,6 +16,7 @@ import (
 	"net/url"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"runtime/pprof"
 	"strings"
 	"sync"
@@ -696,6 +697,7 @@ func New(options *Options) *API {
 		DeploymentID:          api.DeploymentID,
 		WebPushPublicKey:      api.WebpushDispatcher.PublicKey(),
 		Telemetry:             api.Telemetry.Enabled(),
+		GoVersion:             runtime.Version(),
 	}
 	api.SiteHandler, err = site.New(&site.Options{
 		CacheDir:          siteCacheDir,
