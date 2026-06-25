@@ -1,0 +1,31 @@
+# Skyramp Workspace Configuration
+workspace:
+  repoName: shinychimra07/coder
+  repoUrl: https://github.com/shinychimra07/coder
+metadata:
+  schemaVersion: v1
+  executorVersion: v1.3.29
+  createdAt: "2026-06-25T18:18:18.581Z"
+  updatedAt: "2026-06-25T18:18:18.588Z"
+services:
+  - serviceName: coder-backend
+    language: python
+    framework: pytest
+    testDirectory: tests/skyramp
+    api:
+      authType: bearer
+      authHeader: Authorization
+      baseUrl: http://localhost:3111
+    runtimeDetails:
+      serverStartCommand: ./scripts/develop.sh
+      runtime: local
+  - serviceName: coder-frontend
+    language: typescript
+    framework: playwright
+    testDirectory: site/e2e
+    api:
+      authType: bearer
+      authHeader: Authorization
+      baseUrl: http://localhost:3111
+    runtimeDetails:
+      runtime: local
