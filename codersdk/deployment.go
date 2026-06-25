@@ -5387,6 +5387,17 @@ type DeploymentStats struct {
 	SessionCount SessionCountDeploymentStats `json:"session_count"`
 }
 
+// DeploymentWorkspaceCounts summarizes workspace counts by status for the
+// current deployment. Values are sourced from the metrics cache and may be
+// zero when stats have not yet been collected.
+type DeploymentWorkspaceCounts struct {
+	Pending  int64 `json:"pending"`
+	Building int64 `json:"building"`
+	Running  int64 `json:"running"`
+	Failed   int64 `json:"failed"`
+	Stopped  int64 `json:"stopped"`
+}
+
 type SSHConfigResponse struct {
 	// HostnamePrefix is the prefix we append to workspace names for SSH hostnames.
 	// Deprecated: use HostnameSuffix instead.
