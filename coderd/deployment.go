@@ -84,3 +84,32 @@ func buildInfoHandler(resp codersdk.BuildInfoResponse) http.HandlerFunc {
 func (api *API) sshConfig(rw http.ResponseWriter, r *http.Request) {
 	httpapi.Write(r.Context(), rw, http.StatusOK, api.SSHConfig)
 }
+
+// @Summary Get deployment workspace counts
+// @ID get-deployment-workspace-counts
+// @Security CoderSessionToken
+// @Produce json
+// @Tags General
+// @Success 200 {object} codersdk.DeploymentWorkspaceCounts
+// @Router /api/v2/deployment/counts [get]
+func (api *API) deploymentWorkspaceCounts(rw http.ResponseWriter, r *http.Request) {
+	if !api.Authorize(r, policy.ActionRead, rbac.ResourceDeploymentStats) {
+		httpapi.Forbidden(rw)
+		return
+	}
+
+	stats, ok := api.metricsCache.DeploymentStats()
+	if !ok {
+		// Return zero counts when stats are not yet available.
+		httpapi.Write(r.Context(), rw, http.StatusOK, codersdk.DeploymentWorkspaceCounts{})
+		return
+	}
+
+	httpapi.Write(r.Context(), rw, http.StatusOK, codersdk.DeploymentWorkspaceCounts{
+		Pending:  stats.Workspaces.Pending,
+		Building: stats.Workspaces.Building,
+		Running:  stats.Workspaces.Running,
+		Failed:   stats.Workspaces.Failed,
+		Stopped:  stats.Workspaces.Stopped,
+	})
+}
