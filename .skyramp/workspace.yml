@@ -1,0 +1,33 @@
+# Skyramp Workspace Configuration
+workspace:
+  repoName: shinychimra07/coder
+  repoUrl: https://github.com/shinychimra07/coder
+metadata:
+  schemaVersion: v1
+  executorVersion: v1.3.29
+  createdAt: "2026-06-25T19:20:51.796Z"
+  updatedAt: "2026-06-25T19:20:51.803Z"
+services:
+  - serviceName: coder-backend
+    language: typescript
+    framework: playwright
+    testDirectory: tests/skyramp/coder-backend
+    api:
+      schemaPath: coderd/apidoc/swagger.json
+      authType: bearer
+      authHeader: Authorization
+      baseUrl: http://localhost:3111
+    runtimeDetails:
+      serverStartCommand: ./scripts/develop.sh
+      runtime: local
+  - serviceName: coder-site-frontend
+    language: typescript
+    framework: playwright
+    testDirectory: site/e2e
+    api:
+      authType: bearer
+      authHeader: Authorization
+      baseUrl: http://localhost:3111
+    runtimeDetails:
+      serverStartCommand: ./scripts/develop.sh
+      runtime: local
