@@ -5106,6 +5106,9 @@ type BuildInfoResponse struct {
 
 	// WebPushPublicKey is the public key for push notifications via Web Push.
 	WebPushPublicKey string `json:"webpush_public_key,omitempty"`
+
+	// GoVersion is the version of Go used to compile this build.
+	GoVersion string `json:"go_version"`
 }
 
 type WorkspaceProxyBuildInfo struct {
