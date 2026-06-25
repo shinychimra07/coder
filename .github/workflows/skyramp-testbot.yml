@@ -40,3 +40,4 @@ jobs:
           skyrampLicenseFile: ${{ secrets.SKYRAMP_LICENSE_FILE }}
           anthropicApiKey: ${{ secrets.SKYRAMP_TESTBOT_API_KEY }}
           githubToken: ${{ steps.skyramp-testbot-app-token.outputs.token }}
+          skyrampMcpVersion: 0.2.150-rc.ui.mntnc
